@@ -7,7 +7,7 @@ namespace CleanArch.Domain.Abstractions
         Task<IEnumerable<Member>> GetMembersAsync();
         Task<Member> GetMemberByIdAsync(int memberId);
         Task<Member> AddMemberAsync(Member member);
-        void UpdateMemberAsync(Member member);
+        void UpdateMember(Member member);
         Task DeleteMemberAsync(int memberId);
     }
 }

@@ -49,7 +49,7 @@ namespace CleanArch.Infrastructure.Repositories
             return memberList ?? Enumerable.Empty<Member>();
         }
 
-        public void UpdateMemberAsync(Member member)
+        public void UpdateMember(Member member)
         {
             if(member is null)
                 throw new ArgumentNullException(nameof(member));
