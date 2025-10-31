@@ -3,7 +3,7 @@ using MediatR;
 
 namespace CleanArch.Application.Members.Commands
 {
-    public class UpdateMemberCommand : IRequest<Member>
+    public class UpdateMemberCommand : MemberCommandBase
     {
         public int Id { get; set; }
     }

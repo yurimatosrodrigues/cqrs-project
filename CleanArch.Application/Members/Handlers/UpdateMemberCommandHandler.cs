@@ -23,6 +23,7 @@ namespace CleanArch.Application.Members.Handlers
                 request.Gender, request.Email, request.IsActive);
 
             _unitOfWork.MemberRepository.UpdateMember(existingMember);
+            await _unitOfWork.CommitAsync();
             return existingMember;
         }
     }

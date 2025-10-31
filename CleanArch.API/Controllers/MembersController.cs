@@ -1,4 +1,5 @@
 ﻿using CleanArch.Application.Members.Commands;
+using CleanArch.Application.Members.Queries;
 using CleanArch.Domain.Abstractions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,11 +21,20 @@ namespace CleanArch.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetMembers()
         {
-            //var members = await _unitOfWork.MemberRepository.GetMembersAsync();
-            return Ok();
+            var query = new GetMembersQuery();
+            var members = await _mediator.Send(query);
+            return Ok(members);
         }
 
-        [HttpPost]        
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetMembers(int id)
+        {
+            var query = new GetMemberByIdQuery { Id = id };
+            var member = await _mediator.Send(query);
+            return member != null ? Ok(member) : NotFound("Member not found.");
+        }
+
+        [HttpPost]
         public async Task<IActionResult> CreateMember(CreateMemberCommand command)
         {
             var createdMember = await _mediator.Send(command);
